@@ -53,9 +53,9 @@ const SiteLayout = () => {
             <span className="text-primary">$</span> echo "built with React + Vite — © 2026 karan"
           </p>
           <div className="flex items-center gap-3">
-            <a href="mailto:karan@email.com" className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-primary transition-colors"><Mail className="h-4 w-4" /></a>
-            <a href="https://linkedin.com/in/karan-dev" target="_blank" rel="noreferrer" className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-primary transition-colors"><Linkedin className="h-4 w-4" /></a>
-            <a href="#" className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-primary transition-colors"><Github className="h-4 w-4" /></a>
+            <a href="mailto:karan@email.com" aria-label="Email" className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-primary transition-colors"><Mail className="h-4 w-4" /></a>
+            <a href="https://www.linkedin.com/in/karan-jee-50868b315" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-primary transition-colors"><Linkedin className="h-4 w-4" /></a>
+            <a href="#" aria-label="GitHub" className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-primary transition-colors"><Github className="h-4 w-4" /></a>
           </div>
         </div>
       </footer>

@@ -3,19 +3,22 @@ export const resume = {
   role: "Web Developer",
   location: "Lahore, Pakistan",
   email: "karan@email.com",
-  linkedin: "linkedin.com/in/karan-dev",
-  portfolio: "braquetravel.co.uk",
+  linkedin: "linkedin.com/in/karan-jee-50868b315",
+  linkedinUrl: "https://www.linkedin.com/in/karan-jee-50868b315",
+  portfolio: "buraqtravel.co.uk",
+  company: { name: "Cbrix", url: "https://www.cbrix.com/", tagline: "Custom Software Development Company" },
   education: "BS Information Technology — PUCIT, Punjab University (Ongoing)",
   summary:
-    "Motivated and detail-oriented Web Developer currently pursuing BS Information Technology at PUCIT, Punjab University. Skilled in building responsive, user-centric web applications using modern front-end and back-end technologies. Hands-on experience developing real-world projects at Seabricks, including travel agency platforms and WordPress solutions. Passionate about clean code, intuitive UI, and continuous learning.",
+    "Motivated and detail-oriented Web Developer currently pursuing BS Information Technology at PUCIT, Punjab University. Currently building real-world client projects at Cbrix — a custom software development company — including travel agency platforms and WordPress solutions. Passionate about clean code, intuitive UI, and continuous learning.",
   experience: [
     {
       role: "Web Developer",
-      company: "Seabricks",
+      company: "Cbrix",
+      companyUrl: "https://www.cbrix.com/",
       period: "Current",
       location: "Pakistan",
       points: [
-        "Designed and developed responsive front-end interfaces for multiple client projects, including travel agency websites such as braquetravel.co.uk.",
+        "Designed and developed responsive front-end interfaces for multiple client projects, including travel agency websites such as buraqtravel.co.uk.",
         "Built dynamic web applications using PHP with Bootstrap and jQuery for server-side logic and interactive UI components.",
         "Developed and customised WordPress themes from scratch, delivering tailored CMS solutions for clients.",
         "Integrated REST APIs and third-party services into web applications for enhanced functionality.",

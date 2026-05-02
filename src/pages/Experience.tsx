@@ -18,7 +18,17 @@ const Experience = () => {
                   <h2 className="text-2xl font-bold">{job.role}</h2>
                   <span className="font-mono text-sm text-accent">{job.period}</span>
                 </div>
-                <p className="font-mono text-primary mb-4">@ {job.company} · {job.location}</p>
+                <p className="font-mono text-primary mb-4">
+                  @{" "}
+                  {job.companyUrl ? (
+                    <a href={job.companyUrl} target="_blank" rel="noreferrer" className="underline-offset-4 hover:underline">
+                      {job.company}
+                    </a>
+                  ) : (
+                    job.company
+                  )}{" "}
+                  · {job.location}
+                </p>
                 <ul className="space-y-2">
                   {job.points.map((p) => (
                     <li key={p} className="text-muted-foreground flex gap-3 leading-relaxed">

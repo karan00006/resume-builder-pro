@@ -25,11 +25,11 @@ export const resume = {
     },
   ],
   projects: [
-    { name: "Braque Travel", url: "braquetravel.co.uk", description: "Full-featured travel agency website with booking pages, destination galleries, and contact forms.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "jQuery", "PHP"] },
-    { name: "Hajj & Umrah Agency Platform", description: "Complete multi-page website for a Hajj & Umrah travel agency with package listings and inquiry system.", stack: ["PHP", "Bootstrap", "MySQL"] },
-    { name: "React Web Applications", description: "Interactive single-page applications built with React, demonstrating component-based architecture and state management.", stack: ["React", "JavaScript", "REST API"] },
-    { name: "WordPress Custom Themes", description: "Custom WordPress themes for clients, enabling easy content management without technical expertise.", stack: ["WordPress", "PHP", "CSS"] },
-    { name: "MCA System", description: "Multi-module web application built with PHP, MySQL and Bootstrap for an internal management workflow.", stack: ["PHP", "MySQL", "Bootstrap"] },
+    { name: "Buraq Travel", url: "buraqtravel.co.uk", image: "buraq-travel", description: "Trusted Islamic Umrah travel agency website in the UK with booking forms, package galleries, and inquiry system.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "jQuery", "PHP"] },
+    { name: "Hajj & Umrah Agency Platform", image: "hajj-umrah", description: "Complete multi-page website for a Hajj & Umrah travel agency with package listings and inquiry system.", stack: ["PHP", "Bootstrap", "MySQL"] },
+    { name: "React Web Applications", image: "react-apps", description: "Interactive single-page applications built with React, demonstrating component-based architecture and state management.", stack: ["React", "JavaScript", "REST API"] },
+    { name: "WordPress Custom Themes", image: "wordpress-themes", description: "Custom WordPress themes for clients, enabling easy content management without technical expertise.", stack: ["WordPress", "PHP", "CSS"] },
+    { name: "MCA System", image: "mca-system", description: "Multi-module web application built with PHP, MySQL and Bootstrap for an internal management workflow.", stack: ["PHP", "MySQL", "Bootstrap"] },
   ],
   skills: {
     "Front-End": ["HTML5", "CSS3", "JavaScript (ES6+)", "Bootstrap", "jQuery", "React.js"],

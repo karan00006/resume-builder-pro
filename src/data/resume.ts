@@ -9,7 +9,7 @@ export const resume = {
   company: { name: "Cbrix", url: "https://www.cbrix.com/", tagline: "Custom Software Development Company" },
   education: "BS Information Technology — PUCIT, Punjab University (Ongoing)",
   summary:
-    "Motivated and detail-oriented Web Developer currently pursuing BS Information Technology at PUCIT, Punjab University. Currently building real-world client projects at Cbrix — a custom software development company — including travel agency platforms and WordPress solutions. Passionate about clean code, intuitive UI, and continuous learning.",
+    "Web Developer building real-world client projects at Cbrix — a custom software development company — including travel agency platforms, custom WordPress themes, and modern React applications. Focused on clean code, intuitive UI, and continuous learning. Alongside my work, I'm currently pursuing a BS in Information Technology at PUCIT, Punjab University.",
   experience: [
     {
       role: "Web Developer",

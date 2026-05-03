@@ -61,8 +61,9 @@ const Home = () => {
           </div>
 
           <div className="order-1 md:order-2 flex justify-center">
-            <div className="relative w-64 h-64 md:w-80 md:h-80">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-accent/20 to-transparent blur-3xl" />
+            <div className="relative w-56 h-56 md:w-72 md:h-72">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-accent/25 to-transparent blur-3xl" />
+              <div className="absolute -inset-6 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.15),transparent_70%)]" />
               <img
                 src={profilePic}
                 alt={`${resume.name} — ${resume.role}`}
@@ -71,9 +72,10 @@ const Home = () => {
                 className="relative w-full h-full object-cover object-top"
                 style={{
                   WebkitMaskImage:
-                    "radial-gradient(ellipse 65% 70% at 50% 45%, hsl(0 0% 0% / 1) 40%, hsl(0 0% 0% / 0.85) 60%, hsl(0 0% 0% / 0) 95%)",
+                    "radial-gradient(ellipse 70% 75% at 50% 42%, #000 35%, rgba(0,0,0,0.9) 55%, rgba(0,0,0,0.4) 80%, transparent 100%)",
                   maskImage:
-                    "radial-gradient(ellipse 65% 70% at 50% 45%, hsl(0 0% 0% / 1) 40%, hsl(0 0% 0% / 0.85) 60%, hsl(0 0% 0% / 0) 95%)",
+                    "radial-gradient(ellipse 70% 75% at 50% 42%, #000 35%, rgba(0,0,0,0.9) 55%, rgba(0,0,0,0.4) 80%, transparent 100%)",
+                  filter: "drop-shadow(0 10px 30px hsl(var(--primary) / 0.25))",
                 }}
               />
             </div>

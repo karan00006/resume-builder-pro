@@ -55,7 +55,7 @@ const SiteLayout = () => {
           <div className="flex items-center gap-3">
             <a href="mailto:karan@email.com" aria-label="Email" className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-primary transition-colors"><Mail className="h-4 w-4" /></a>
             <a href="https://www.linkedin.com/in/karan-jee-50868b315" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-primary transition-colors"><Linkedin className="h-4 w-4" /></a>
-            <a href="#" aria-label="GitHub" className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-primary transition-colors"><Github className="h-4 w-4" /></a>
+            <a href="https://github.com/karan00006" target="_blank" rel="noreferrer" aria-label="GitHub" className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-primary transition-colors"><Github className="h-4 w-4" /></a>
           </div>
         </div>
       </footer>

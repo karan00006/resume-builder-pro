@@ -1,11 +1,12 @@
 import { resume } from "@/data/resume";
 import { PageHeader } from "./About";
-import { Mail, Linkedin, Globe, MapPin } from "lucide-react";
+import { Mail, Linkedin, Globe, MapPin, Github } from "lucide-react";
 
 const Contact = () => {
   const items = [
     { icon: Mail, label: "email", value: resume.email, href: `mailto:${resume.email}` },
     { icon: Linkedin, label: "linkedin", value: resume.linkedin, href: `https://${resume.linkedin}` },
+    { icon: Github, label: "github", value: "github.com/karan00006", href: "https://github.com/karan00006" },
     { icon: Globe, label: "portfolio", value: resume.portfolio, href: `https://${resume.portfolio}` },
     { icon: MapPin, label: "location", value: resume.location },
   ];

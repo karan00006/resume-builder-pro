@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, GraduationCap, Briefcase } from "lucide-react";
 import { resume } from "@/data/resume";
-import profilePic from "@/assets/profile.jpg";
+import profilePic from "@/assets/profile.png";
 import cbrixLogo from "@/assets/cbrix-logo.png";
 
 const Home = () => {
@@ -61,17 +61,21 @@ const Home = () => {
           </div>
 
           <div className="order-1 md:order-2 flex justify-center">
-            <div className="relative">
-              <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-primary via-accent to-primary opacity-60 blur-xl" />
-              <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-primary/50 glow-primary bg-card">
-                <img
-                  src={profilePic}
-                  alt={`${resume.name} — ${resume.role}`}
-                  width={512}
-                  height={512}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            <div className="relative w-64 h-64 md:w-80 md:h-80">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-accent/20 to-transparent blur-3xl" />
+              <img
+                src={profilePic}
+                alt={`${resume.name} — ${resume.role}`}
+                width={640}
+                height={640}
+                className="relative w-full h-full object-cover object-top"
+                style={{
+                  WebkitMaskImage:
+                    "radial-gradient(ellipse 65% 70% at 50% 45%, hsl(0 0% 0% / 1) 40%, hsl(0 0% 0% / 0.85) 60%, hsl(0 0% 0% / 0) 95%)",
+                  maskImage:
+                    "radial-gradient(ellipse 65% 70% at 50% 45%, hsl(0 0% 0% / 1) 40%, hsl(0 0% 0% / 0.85) 60%, hsl(0 0% 0% / 0) 95%)",
+                }}
+              />
             </div>
           </div>
         </div>

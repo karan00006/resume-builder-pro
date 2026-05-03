@@ -29,6 +29,10 @@ export const resume = {
   ],
   projects: [
     { name: "Buraq Travel", url: "buraqtravel.co.uk", image: "buraq-travel", description: "Trusted Islamic Umrah travel agency website in the UK with booking forms, package galleries, and inquiry system.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "jQuery", "PHP"] },
+    { name: "Travel Africa", url: "traveloafrica.co.uk", image: "travel-africa", description: "Travel agency website featuring Umrah packages, contact forms, and a clean responsive layout.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP"] },
+    { name: "Meqaat", url: "meqaat.co.uk", image: "meqaat", description: "Umrah & Hajj agency site with package highlights, inquiry forms, and responsive design.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP"] },
+    { name: "Notty Notes — Margin", url: "nottynotes.lovable.app", image: "notty-notes", description: "A quiet notes keeper for drafts, fragments and ideas — designed like a beautiful book, light as a sticky note.", stack: ["React", "TypeScript", "Tailwind", "Lovable Cloud"] },
+    { name: "StudyForge — AI Study OS", url: "studysite.lovable.app", image: "studyforge", description: "AI-powered study workspace: PDF assignments, AI tutor chat, calculator, calendar & reminders.", stack: ["React", "TypeScript", "Tailwind", "Lovable AI"] },
     { name: "Hajj & Umrah Agency Platform", image: "hajj-umrah", description: "Complete multi-page website for a Hajj & Umrah travel agency with package listings and inquiry system.", stack: ["PHP", "Bootstrap", "MySQL"] },
     { name: "React Web Applications", image: "react-apps", description: "Interactive single-page applications built with React, demonstrating component-based architecture and state management.", stack: ["React", "JavaScript", "REST API"] },
     { name: "WordPress Custom Themes", image: "wordpress-themes", description: "Custom WordPress themes for clients, enabling easy content management without technical expertise.", stack: ["WordPress", "PHP", "CSS"] },

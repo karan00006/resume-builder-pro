@@ -2,6 +2,10 @@ import { resume } from "@/data/resume";
 import { PageHeader } from "./About";
 import { ExternalLink, Folder } from "lucide-react";
 import buraqTravel from "@/assets/projects/buraq-travel.png";
+import travelAfrica from "@/assets/projects/travel-africa.png";
+import meqaat from "@/assets/projects/meqaat.png";
+import nottyNotes from "@/assets/projects/notty-notes.png";
+import studyforge from "@/assets/projects/studyforge.png";
 import hajjUmrah from "@/assets/projects/hajj-umrah.jpg";
 import reactApps from "@/assets/projects/react-apps.jpg";
 import wordpressThemes from "@/assets/projects/wordpress-themes.jpg";
@@ -9,6 +13,10 @@ import mcaSystem from "@/assets/projects/mca-system.jpg";
 
 const imageMap: Record<string, string> = {
   "buraq-travel": buraqTravel,
+  "travel-africa": travelAfrica,
+  "meqaat": meqaat,
+  "notty-notes": nottyNotes,
+  "studyforge": studyforge,
   "hajj-umrah": hajjUmrah,
   "react-apps": reactApps,
   "wordpress-themes": wordpressThemes,

@@ -1,9 +1,9 @@
 import { resume } from "@/data/resume";
 
 const PageHeader = ({ tag, title, subtitle }: { tag: string; title: string; subtitle?: string }) => (
-  <div className="container pt-16 pb-8">
+  <div className="container pt-16 pb-8 reveal-up">
     <p className="font-mono text-sm text-primary mb-2">// {tag}</p>
-    <h1 className="font-mono text-4xl md:text-5xl font-bold mb-3">{title}</h1>
+    <h1 className="font-mono text-4xl md:text-5xl font-bold mb-3 animated-gradient">{title}</h1>
     {subtitle && <p className="text-muted-foreground max-w-2xl">{subtitle}</p>}
   </div>
 );

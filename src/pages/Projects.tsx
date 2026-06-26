@@ -1,6 +1,7 @@
 import { resume } from "@/data/resume";
 import { PageHeader } from "./About";
 import { ExternalLink, Folder } from "lucide-react";
+import { motion } from "framer-motion";
 import buraqTravel from "@/assets/projects/buraq-travel.png";
 import travelAfrica from "@/assets/projects/travel-africa.png";
 import meqaat from "@/assets/projects/meqaat.png";
@@ -33,7 +34,15 @@ const Projects = () => {
         {resume.projects.map((p, i) => {
           const img = p.image ? imageMap[p.image] : undefined;
           return (
-            <article key={p.name} className="group rounded-lg border border-border bg-card/50 overflow-hidden hover:border-primary hover:-translate-y-1 transition-all flex flex-col">
+            <motion.article
+              key={p.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -6 }}
+              className="group rounded-lg border border-border bg-card/50 overflow-hidden hover:border-primary hover:shadow-[0_15px_40px_-15px_hsl(var(--primary)/0.5)] transition-colors flex flex-col"
+            >
               {img && (
                 <div className="aspect-video overflow-hidden border-b border-border bg-secondary">
                   <img

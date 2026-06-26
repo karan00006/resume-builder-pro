@@ -28,6 +28,7 @@ export const resume = {
     },
   ],
   projects: [
+    { name: "Dua Tour", url: "duatour.ca", image: "duatour", description: "Trusted Hajj & Umrah travel agency website in Canada with booking inquiry forms, package listings, and responsive design.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP"] },
     { name: "Buraq Travel", url: "buraqtravel.co.uk", image: "buraq-travel", description: "Trusted Islamic Umrah travel agency website in the UK with booking forms, package galleries, and inquiry system.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "jQuery", "PHP"] },
     { name: "Travel Africa", url: "traveloafrica.co.uk", image: "travel-africa", description: "Travel agency website featuring Umrah packages, contact forms, and a clean responsive layout.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP"] },
     { name: "Meqaat", url: "meqaat.co.uk", image: "meqaat", description: "Umrah & Hajj agency site with package highlights, inquiry forms, and responsive design.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP"] },

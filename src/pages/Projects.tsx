@@ -6,6 +6,7 @@ import travelAfrica from "@/assets/projects/travel-africa.png";
 import meqaat from "@/assets/projects/meqaat.png";
 import nottyNotes from "@/assets/projects/notty-notes.png";
 import studyforge from "@/assets/projects/studyforge.png";
+import duatour from "@/assets/projects/duatour.png";
 import hajjUmrah from "@/assets/projects/hajj-umrah.jpg";
 import reactApps from "@/assets/projects/react-apps.jpg";
 import wordpressThemes from "@/assets/projects/wordpress-themes.jpg";

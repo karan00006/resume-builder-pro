@@ -1,5 +1,6 @@
-import { NavLink, Outlet, Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Terminal, Github, Linkedin, Mail } from "lucide-react";
+import PageTransition from "./PageTransition";
 
 const navItems = [
   { to: "/", label: "home", end: true },
@@ -44,7 +45,7 @@ const SiteLayout = () => {
       </header>
 
       <main className="flex-1">
-        <Outlet />
+        <PageTransition />
       </main>
 
       <footer className="border-t border-border mt-20">

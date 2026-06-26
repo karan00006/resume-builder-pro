@@ -77,7 +77,7 @@ const Projects = () => {
                   ))}
                 </div>
               </div>
-            </article>
+            </motion.article>
           );
         })}
       </div>

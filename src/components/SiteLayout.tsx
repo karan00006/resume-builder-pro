@@ -41,7 +41,9 @@ const SiteLayout = () => {
                 </NavLink>
               </li>
             ))}
+            <li className="ml-2"><ThemeToggle /></li>
           </ul>
+          <div className="md:hidden"><ThemeToggle /></div>
         </nav>
       </header>
 

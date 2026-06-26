@@ -1,6 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 import { Terminal, Github, Linkedin, Mail } from "lucide-react";
 import PageTransition from "./PageTransition";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { to: "/", label: "home", end: true },
@@ -40,7 +41,9 @@ const SiteLayout = () => {
                 </NavLink>
               </li>
             ))}
+            <li className="ml-2"><ThemeToggle /></li>
           </ul>
+          <div className="md:hidden"><ThemeToggle /></div>
         </nav>
       </header>
 

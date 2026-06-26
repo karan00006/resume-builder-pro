@@ -61,8 +61,8 @@ const Home = () => {
           </div>
 
           <div className="order-1 md:order-2 flex justify-center">
-            <div className="relative w-56 h-56 md:w-72 md:h-72">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-accent/25 to-transparent blur-3xl" />
+            <div className="relative w-56 h-56 md:w-72 md:h-72 float">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-accent/25 to-transparent blur-3xl pulse-glow rounded-full" />
               <div className="absolute -inset-6 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.15),transparent_70%)]" />
               <img
                 src={profilePic}

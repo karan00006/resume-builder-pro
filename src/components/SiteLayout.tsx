@@ -1,7 +1,9 @@
 import { NavLink, Link } from "react-router-dom";
-import { Terminal, Github, Linkedin, Mail } from "lucide-react";
+import { Terminal, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { resume } from "@/data/resume";
 import PageTransition from "./PageTransition";
 import ThemeToggle from "./ThemeToggle";
+
 
 const navItems = [
   { to: "/", label: "home", end: true },

@@ -33,7 +33,7 @@
   }
 }
 #lovable-badge{
-  display: none;
+  display: none !important;
 }
 .card {
   padding: 2em;

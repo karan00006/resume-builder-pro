@@ -55,8 +55,8 @@ const SiteLayout = () => {
 
       <footer className="border-t border-border mt-20 bg-card/30">
         <div className="container py-16 md:py-20">
-          <div className="grid md:grid-cols-12 gap-10 md:gap-8">
-            <div className="md:col-span-5">
+          <div className="grid md:grid-cols-3 gap-10 md:gap-8">
+            <div>
               <Link to="/" className="flex items-center gap-2 font-mono font-bold text-lg mb-4">
                 <Terminal className="h-5 w-5 text-primary" />
                 <span className="text-foreground">karan</span>
@@ -78,7 +78,7 @@ const SiteLayout = () => {
               </div>
             </div>
 
-            <div className="md:col-span-3 md:col-start-7">
+            <div>
               <h3 className="font-mono text-sm font-semibold text-foreground mb-4">Sitemap</h3>
               <ul className="space-y-3">
                 {navItems.map((item) => (
@@ -91,7 +91,7 @@ const SiteLayout = () => {
               </ul>
             </div>
 
-            <div className="md:col-span-4">
+            <div>
               <h3 className="font-mono text-sm font-semibold text-foreground mb-4">Contact</h3>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li className="flex items-start gap-3">
@@ -109,6 +109,7 @@ const SiteLayout = () => {
               </ul>
             </div>
           </div>
+
 
           <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="font-mono text-xs text-muted-foreground">

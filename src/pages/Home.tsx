@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { resume } from "@/data/resume";
 import profilePic from "@/assets/profile.png";
 import cbrixLogo from "@/assets/cbrix-logo.png";
+import alhijazTravel from "@/assets/projects/alhijaz-travel.png";
 import cheapHolidaysPackages from "@/assets/projects/cheap-holidays-packages.png";
 import buraqTravel from "@/assets/projects/buraq-travel.png";
 import duatour from "@/assets/projects/duatour.png";

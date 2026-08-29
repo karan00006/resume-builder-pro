@@ -28,6 +28,7 @@ export const resume = {
     },
   ],
   projects: [
+    { name: "Al Hijaz Travel", url: "alhijaztravel.com", image: "alhijaz-travel", description: "Premium Hajj & Umrah travel agency website with package search, booking inquiry forms, and responsive design.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP"] },
     { name: "Cheap Holidays Packages", url: "cheapholidayspackages.com", image: "cheap-holidays-packages", description: "Holiday and Umrah package booking platform with search filters, price match, flexible bookings, and responsive design.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP"] },
     { name: "Dua Tour", url: "duatour.ca", image: "duatour", description: "Trusted Hajj & Umrah travel agency website in Canada with booking inquiry forms, package listings, and responsive design.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP"] },
     { name: "Buraq Travel", url: "buraqtravel.co.uk", image: "buraq-travel", description: "Trusted Islamic Umrah travel agency website in the UK with booking forms, package galleries, and inquiry system.", stack: ["HTML", "CSS", "JavaScript", "Bootstrap", "jQuery", "PHP"] },

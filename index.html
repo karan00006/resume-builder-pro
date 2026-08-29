@@ -24,7 +24,7 @@
       (function () {
         try {
           var valid = ['dark', 'light', 'classic'];
-          var t = localStorage.getItem('theme') || 'dark';
+          var t = localStorage.getItem('theme') || 'classic';
           if (valid.indexOf(t) === -1) t = 'dark';
           document.documentElement.classList.remove('dark', 'light', 'classic');
           document.documentElement.classList.add(t);

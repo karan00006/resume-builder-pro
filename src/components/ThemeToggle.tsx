@@ -6,10 +6,10 @@ export type Theme = "dark" | "light" | "classic";
 const themes: Theme[] = ["dark", "light", "classic"];
 
 const getInitialTheme = (): Theme => {
-  if (typeof window === "undefined") return "dark";
+  if (typeof window === "undefined") return "classic";
   const stored = localStorage.getItem("theme") as Theme | null;
   if (stored && themes.includes(stored)) return stored;
-  return "dark";
+  return "classic";
 };
 
 export const applyTheme = (theme: Theme) => {

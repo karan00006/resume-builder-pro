@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
 /* Tech-themed design system: deep navy + electric cyan + neon lime accent */
 
@@ -155,10 +155,33 @@
       radial-gradient(circle at 80% 100%, hsl(270 70% 60% / 0.10), transparent 55%);
   }
   .classic body {
+    font-family: 'Lora', Georgia, serif;
     background-image:
-      radial-gradient(circle at 15% 0%, hsl(var(--primary) / 0.08), transparent 55%),
-      radial-gradient(circle at 85% 100%, hsl(var(--accent) / 0.10), transparent 55%);
+      radial-gradient(circle at 15% 0%, hsl(var(--primary) / 0.05), transparent 55%),
+      radial-gradient(circle at 85% 100%, hsl(var(--accent) / 0.06), transparent 55%);
   }
+  .classic h1, .classic h2, .classic h3, .classic h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  /* de-techify: no mono labels, gradients, grid or glow in classic */
+  .classic .font-mono { font-family: 'Lora', Georgia, serif; }
+  .classic .text-gradient {
+    background: none;
+    color: hsl(var(--primary));
+  }
+  .classic .animated-gradient {
+    background: none;
+    color: hsl(var(--primary));
+    animation: none;
+  }
+  .classic .grid-bg { background-image: none; }
+  .classic .glow-primary, .classic .border-glow, .classic .pulse-glow {
+    box-shadow: 0 4px 20px -8px hsl(var(--primary) / 0.25);
+    animation: none;
+  }
+  .classic .shimmer { animation: none; background: none; }
+  .classic .float { animation: none; }
+  .classic ::selection { background: hsl(var(--primary) / 0.2); }
   ::selection { background: hsl(var(--primary) / 0.3); color: hsl(var(--foreground)); }
 }
 

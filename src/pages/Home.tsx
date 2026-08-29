@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { resume } from "@/data/resume";
 import profilePic from "@/assets/profile.png";
 import cbrixLogo from "@/assets/cbrix-logo.png";
+import alhijazTravel from "@/assets/projects/alhijaz-travel.png";
 import cheapHolidaysPackages from "@/assets/projects/cheap-holidays-packages.png";
 import buraqTravel from "@/assets/projects/buraq-travel.png";
 import duatour from "@/assets/projects/duatour.png";
@@ -11,6 +12,7 @@ import nottyNotes from "@/assets/projects/notty-notes.png";
 import studyforge from "@/assets/projects/studyforge.png";
 
 const featuredImages: Record<string, string> = {
+  "alhijaz-travel": alhijazTravel,
   "cheap-holidays-packages": cheapHolidaysPackages,
   "buraq-travel": buraqTravel,
   "duatour": duatour,
@@ -19,7 +21,7 @@ const featuredImages: Record<string, string> = {
 };
 
 const featuredProjects = resume.projects.filter((p) =>
-  ["Cheap Holidays Packages", "Buraq Travel", "Dua Tour", "Notty Notes — Margin", "StudyForge — AI Study OS"].includes(p.name)
+  ["Al Hijaz Travel", "Cheap Holidays Packages", "Buraq Travel", "Dua Tour", "Notty Notes — Margin", "StudyForge — AI Study OS"].includes(p.name)
 );
 
 

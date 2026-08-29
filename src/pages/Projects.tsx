@@ -2,6 +2,7 @@ import { resume } from "@/data/resume";
 import { PageHeader } from "./About";
 import { ExternalLink, Folder } from "lucide-react";
 import { motion } from "framer-motion";
+import alhijazTravel from "@/assets/projects/alhijaz-travel.png";
 import cheapHolidaysPackages from "@/assets/projects/cheap-holidays-packages.png";
 import buraqTravel from "@/assets/projects/buraq-travel.png";
 import travelAfrica from "@/assets/projects/travel-africa.png";

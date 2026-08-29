@@ -94,6 +94,49 @@
     --sidebar-border: 215 25% 86%;
     --sidebar-ring: 187 85% 38%;
   }
+
+  .classic {
+    --background: 40 33% 96%;
+    --foreground: 220 20% 22%;
+
+    --card: 40 30% 100%;
+    --card-foreground: 220 20% 22%;
+
+    --popover: 40 30% 100%;
+    --popover-foreground: 220 20% 22%;
+
+    --primary: 210 60% 35%;
+    --primary-foreground: 40 33% 96%;
+
+    --secondary: 40 25% 92%;
+    --secondary-foreground: 220 20% 22%;
+
+    --muted: 40 20% 90%;
+    --muted-foreground: 220 12% 45%;
+
+    --accent: 35 80% 50%;
+    --accent-foreground: 220 20% 22%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 20% 82%;
+    --input: 40 20% 82%;
+    --ring: 210 60% 35%;
+
+    --gradient-tech: linear-gradient(135deg, hsl(210 60% 35%) 0%, hsl(190 70% 35%) 50%, hsl(35 80% 50%) 100%);
+    --shadow-glow: 0 0 40px hsl(210 60% 35% / 0.18);
+    --shadow-elegant: 0 20px 60px -20px hsl(210 60% 35% / 0.25);
+
+    --sidebar-background: 40 30% 100%;
+    --sidebar-foreground: 220 20% 22%;
+    --sidebar-primary: 210 60% 35%;
+    --sidebar-primary-foreground: 40 33% 96%;
+    --sidebar-accent: 40 25% 92%;
+    --sidebar-accent-foreground: 220 20% 22%;
+    --sidebar-border: 40 20% 82%;
+    --sidebar-ring: 210 60% 35%;
+  }
 }
 
 @layer base {
@@ -110,6 +153,11 @@
     background-image:
       radial-gradient(circle at 20% 0%, hsl(var(--primary) / 0.12), transparent 55%),
       radial-gradient(circle at 80% 100%, hsl(270 70% 60% / 0.10), transparent 55%);
+  }
+  .classic body {
+    background-image:
+      radial-gradient(circle at 15% 0%, hsl(var(--primary) / 0.08), transparent 55%),
+      radial-gradient(circle at 85% 100%, hsl(var(--accent) / 0.10), transparent 55%);
   }
   ::selection { background: hsl(var(--primary) / 0.3); color: hsl(var(--foreground)); }
 }

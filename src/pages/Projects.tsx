@@ -2,6 +2,7 @@ import { resume } from "@/data/resume";
 import { PageHeader } from "./About";
 import { ExternalLink, Folder } from "lucide-react";
 import { motion } from "framer-motion";
+import cheapHolidaysPackages from "@/assets/projects/cheap-holidays-packages.png";
 import buraqTravel from "@/assets/projects/buraq-travel.png";
 import travelAfrica from "@/assets/projects/travel-africa.png";
 import meqaat from "@/assets/projects/meqaat.png";
@@ -14,6 +15,7 @@ import wordpressThemes from "@/assets/projects/wordpress-themes.jpg";
 import mcaSystem from "@/assets/projects/mca-system.jpg";
 
 const imageMap: Record<string, string> = {
+  "cheap-holidays-packages": cheapHolidaysPackages,
   "buraq-travel": buraqTravel,
   "travel-africa": travelAfrica,
   "meqaat": meqaat,

@@ -107,7 +107,7 @@ const Home = () => {
       <div className="container pb-20">
         <div className="grid md:grid-cols-3 gap-4">
           {[
-            { k: "5+", v: "projects shipped" },
+            { k: "10+", v: "projects shipped" },
             { k: "10+", v: "technologies" },
             { k: "1+", v: "years building" },
           ].map((s) => (

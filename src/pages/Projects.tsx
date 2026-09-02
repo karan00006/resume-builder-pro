@@ -26,6 +26,8 @@ const imageMap: Record<string, string> = {
   "notty-notes": nottyNotes,
   "studyforge": studyforge,
   "duatour": duatour,
+  "study-buddy-math": studyBuddyMath,
+  "geometry-guru-pro": geometryGuruPro,
   "hajj-umrah": hajjUmrah,
   "react-apps": reactApps,
   "wordpress-themes": wordpressThemes,

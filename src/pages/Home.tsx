@@ -25,7 +25,7 @@ const featuredImages: Record<string, string> = {
 };
 
 const featuredProjects = resume.projects.filter((p) =>
-  ["Al Hijaz Travel", "Cheap Holidays Packages", "Buraq Travel", "Dua Tour", "Notty Notes — Margin", "StudyForge — AI Study OS"].includes(p.name)
+  ["Al Hijaz Travel", "Cheap Holidays Packages", "Buraq Travel", "Dua Tour", "Notty Notes — Margin", "StudyForge — AI Study OS", "Study Buddy Math", "Geometry Guru Pro"].includes(p.name)
 );
 
 

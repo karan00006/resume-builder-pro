@@ -10,6 +10,8 @@ import buraqTravel from "@/assets/projects/buraq-travel.png";
 import duatour from "@/assets/projects/duatour.png";
 import nottyNotes from "@/assets/projects/notty-notes.png";
 import studyforge from "@/assets/projects/studyforge.png";
+import studyBuddyMath from "@/assets/projects/study-buddy-math.png";
+import geometryGuruPro from "@/assets/projects/geometry-guru-pro.png";
 
 const featuredImages: Record<string, string> = {
   "alhijaz-travel": alhijazTravel,
@@ -18,10 +20,12 @@ const featuredImages: Record<string, string> = {
   "duatour": duatour,
   "notty-notes": nottyNotes,
   "studyforge": studyforge,
+  "study-buddy-math": studyBuddyMath,
+  "geometry-guru-pro": geometryGuruPro,
 };
 
 const featuredProjects = resume.projects.filter((p) =>
-  ["Al Hijaz Travel", "Cheap Holidays Packages", "Buraq Travel", "Dua Tour", "Notty Notes — Margin", "StudyForge — AI Study OS"].includes(p.name)
+  ["Al Hijaz Travel", "Cheap Holidays Packages", "Buraq Travel", "Dua Tour", "Notty Notes — Margin", "StudyForge — AI Study OS", "Study Buddy Math", "Geometry Guru Pro"].includes(p.name)
 );
 
 

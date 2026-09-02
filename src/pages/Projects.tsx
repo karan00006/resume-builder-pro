@@ -10,6 +10,8 @@ import meqaat from "@/assets/projects/meqaat.png";
 import nottyNotes from "@/assets/projects/notty-notes.png";
 import studyforge from "@/assets/projects/studyforge.png";
 import duatour from "@/assets/projects/duatour.png";
+import studyBuddyMath from "@/assets/projects/study-buddy-math.png";
+import geometryGuruPro from "@/assets/projects/geometry-guru-pro.png";
 import hajjUmrah from "@/assets/projects/hajj-umrah.jpg";
 import reactApps from "@/assets/projects/react-apps.jpg";
 import wordpressThemes from "@/assets/projects/wordpress-themes.jpg";
@@ -24,6 +26,8 @@ const imageMap: Record<string, string> = {
   "notty-notes": nottyNotes,
   "studyforge": studyforge,
   "duatour": duatour,
+  "study-buddy-math": studyBuddyMath,
+  "geometry-guru-pro": geometryGuruPro,
   "hajj-umrah": hajjUmrah,
   "react-apps": reactApps,
   "wordpress-themes": wordpressThemes,

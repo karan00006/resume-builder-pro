@@ -2,7 +2,7 @@ export const resume = {
   name: "Karan",
   role: "Web Developer",
   location: "Lahore, Pakistan",
-  email: "karanjee.1803@email.com",
+  email: "karanjee.1803@gmail.com",
   linkedin: "linkedin.com/in/karan-jee-50868b315",
   linkedinUrl: "https://www.linkedin.com/in/karan-jee-50868b315",
   portfolio: "buraqtravel.co.uk",

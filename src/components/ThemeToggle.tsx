@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import { Moon, Sun, Palette } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 
-export type Theme = "dark" | "light" | "classic";
+export type Theme = "light" | "dark";
 
-const themes: Theme[] = ["dark", "light", "classic"];
+const themes: Theme[] = ["light", "dark"];
 
 const getInitialTheme = (): Theme => {
-  if (typeof window === "undefined") return "classic";
+  if (typeof window === "undefined") return "light";
   const stored = localStorage.getItem("theme") as Theme | null;
   if (stored && themes.includes(stored)) return stored;
-  return "classic";
+  return "light";
 };
 
 export const applyTheme = (theme: Theme) => {
   const root = document.documentElement;
-  root.classList.remove("dark", "light", "classic");
+  root.classList.remove("dark", "light");
   root.classList.add(theme);
 };
 
@@ -34,9 +34,8 @@ const ThemeToggle = () => {
   };
 
   const labels: Record<Theme, string> = {
+    light: "Switch to dark mode",
     dark: "Switch to light mode",
-    light: "Switch to classic mode",
-    classic: "Switch to dark mode",
   };
 
   return (
@@ -55,11 +54,6 @@ const ThemeToggle = () => {
       <Moon
         className={`h-4 w-4 absolute transition-all duration-300 ${
           theme === "dark" ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-50"
-        }`}
-      />
-      <Palette
-        className={`h-4 w-4 absolute transition-all duration-300 ${
-          theme === "classic" ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-50"
         }`}
       />
     </button>

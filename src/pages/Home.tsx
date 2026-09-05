@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, GraduationCap, ExternalLink, Folder } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState, type PointerEvent } from "react";
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperInstance } from "swiper";
+import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
 import { resume } from "@/data/resume";
 import alhijazTravel from "@/assets/projects/alhijaz-travel.png";
 import cheapHolidaysPackages from "@/assets/projects/cheap-holidays-packages.png";
@@ -115,82 +121,33 @@ const HomeProjectCard = ({ project, image }: { project: (typeof resume.projects)
 );
 
 const HomeProjectSwiper = () => {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef({ active: false, startX: 0, startScrollLeft: 0 });
-  const activeIndexRef = useRef(0);
-  const interactingRef = useRef(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const getCards = () => Array.from(trackRef.current?.children ?? []) as HTMLElement[];
-  const scrollToCard = (index: number) => {
-    const card = getCards()[index];
-    if (card) trackRef.current?.scrollTo({ left: card.offsetLeft - 6, behavior: "smooth" });
-  };
-  const updateActiveIndex = () => {
-    const track = trackRef.current;
-    const cards = getCards();
-    if (!track || cards.length === 0) return;
-    const nearest = cards.reduce((best, card, index) =>
-      Math.abs(card.offsetLeft - track.scrollLeft - 6) < Math.abs(cards[best].offsetLeft - track.scrollLeft - 6) ? index : best, 0);
-    activeIndexRef.current = nearest;
-    setActiveIndex(nearest);
-  };
-
-  useEffect(() => {
-    const autoplay = window.setInterval(() => {
-      if (interactingRef.current) return;
-      const nextIndex = activeIndexRef.current >= featuredProjects.length - 1 ? 0 : activeIndexRef.current + 1;
-      scrollToCard(nextIndex);
-    }, 4000);
-
-    return () => window.clearInterval(autoplay);
-  }, []);
-
-  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
-    const track = trackRef.current;
-    if (!track) return;
-    interactingRef.current = true;
-    dragRef.current = { active: true, startX: event.clientX, startScrollLeft: track.scrollLeft };
-    track.setPointerCapture(event.pointerId);
-  };
-
-  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
-    const track = trackRef.current;
-    if (!track || !dragRef.current.active) return;
-    event.preventDefault();
-    track.scrollLeft = dragRef.current.startScrollLeft - (event.clientX - dragRef.current.startX);
-  };
-
-  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
-    const track = trackRef.current;
-    if (track?.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
-    dragRef.current.active = false;
-    window.setTimeout(() => { interactingRef.current = false; }, 250);
-  };
+  const [swiper, setSwiper] = useState<SwiperInstance | null>(null);
 
   return (
-    <div className="home-project-swiper">
-      <div
-        ref={trackRef}
-        className="home-project-track"
-        onScroll={updateActiveIndex}
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerUp}
-        onPointerEnter={() => { interactingRef.current = true; }}
-        onPointerLeave={() => { if (!dragRef.current.active) interactingRef.current = false; }}
+    <div className="home-project-swiper-shell">
+      <Swiper
+        effect="coverflow"
+        grabCursor
+        centeredSlides
+        slidesPerView="auto"
+        loop
+        autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+        coverflowEffect={{ rotate: 28, stretch: 0, depth: 110, modifier: 1, slideShadows: false }}
+        pagination={{ clickable: true }}
+        modules={[Autoplay, EffectCoverflow, Pagination]}
+        className="home-project-swiper"
+        onSwiper={setSwiper}
       >
         {featuredProjects.map((project) => (
-          <HomeProjectCard key={project.name} project={project} image={project.image ? featuredImages[project.image] : undefined} />
+          <SwiperSlide key={project.name}>
+            <HomeProjectCard project={project} image={project.image ? featuredImages[project.image] : undefined} />
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
       <div className="home-project-controls">
-        <button type="button" onClick={() => scrollToCard(Math.max(0, activeIndex - 1))} aria-label="Previous project" className="home-project-arrow"><ArrowRight className="h-4 w-4 rotate-180" /></button>
-        <div className="home-project-dots">
-          {featuredProjects.map((project, index) => <button type="button" key={project.name} onClick={() => scrollToCard(index)} className={index === activeIndex ? "is-active" : ""} aria-label={`Go to project ${index + 1}`} />)}
-        </div>
-        <button type="button" onClick={() => scrollToCard(Math.min(featuredProjects.length - 1, activeIndex + 1))} aria-label="Next project" className="home-project-arrow"><ArrowRight className="h-4 w-4" /></button>
+        <button type="button" onClick={() => swiper?.slidePrev()} aria-label="Previous project" className="home-project-arrow"><ArrowRight className="h-4 w-4 rotate-180" /></button>
+        <span className="home-project-control-label">Drag to explore</span>
+        <button type="button" onClick={() => swiper?.slideNext()} aria-label="Next project" className="home-project-arrow"><ArrowRight className="h-4 w-4" /></button>
       </div>
     </div>
   );

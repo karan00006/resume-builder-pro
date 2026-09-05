@@ -166,7 +166,7 @@ const Home = () => {
           </h1>
 
           <p className="hero-subhead">
-            I&apos;m a web developer at {resume.company.name}, where I help build travel booking sites, business websites, and custom web apps for real clients. I&apos;m also studying Information Technology at Punjab University.
+            I&apos;m a web developer at {resume.company.name}, where I help build travel booking sites, business websites for real clients. I&apos;m also studying Information Technology at Punjab University.
           </p>
 
           <div className="hero-ctas">

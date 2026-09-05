@@ -1,5 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
-import { Terminal, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { useState } from "react";
+import { Terminal, Github, Linkedin, Mail, MapPin, Menu, X } from "lucide-react";
 import { resume } from "@/data/resume";
 import PageTransition from "./PageTransition";
 import ThemeToggle from "./ThemeToggle";
@@ -15,6 +16,8 @@ const navItems = [
 ];
 
 const SiteLayout = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border">
@@ -45,8 +48,43 @@ const SiteLayout = () => {
             ))}
             <li className="ml-2"><ThemeToggle /></li>
           </ul>
-          <div className="md:hidden"><ThemeToggle /></div>
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileMenuOpen}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-card/60 text-muted-foreground hover:border-primary hover:text-primary"
+            >
+              {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
+          </div>
         </nav>
+        {mobileMenuOpen && (
+          <div className="border-t border-border bg-background/95 px-4 pb-4 pt-2 backdrop-blur-xl md:hidden">
+            <ul className="space-y-1 font-mono text-sm">
+              {navItems.map((item) => (
+                <li key={item.to}>
+                  <NavLink
+                    to={item.to}
+                    end={item.end}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `block rounded-md px-3 py-3 transition-colors ${
+                        isActive
+                          ? "bg-primary/10 text-primary"
+                          : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                      }`
+                    }
+                  >
+                    <span className="text-primary">/</span>{item.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </header>
 
       <main className="flex-1">

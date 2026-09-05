@@ -393,6 +393,22 @@
   .home-project-swiper .swiper-pagination-bullet { width: 7px; height: 7px; opacity: 1; background: hsl(var(--border)); transition: width 0.2s ease, background 0.2s ease; }
   .home-project-swiper .swiper-pagination-bullet-active { width: 20px; border-radius: 4px; background: hsl(var(--primary)); }
   .home-project-control-label { color: hsl(var(--muted-foreground)); font: 12px 'JetBrains Mono', monospace; }
+  @media (max-width: 640px) {
+    .home-project-swiper-shell { margin: 0 -8px; width: calc(100% + 16px); }
+    .home-project-swiper { padding: 8px 0 38px; }
+    .home-project-swiper .swiper-slide { width: calc(100vw - 64px); max-width: 360px; }
+    .home-project-shot-bar { padding: 9px 10px; }
+    .home-project-shot-dot { width: 7px; height: 7px; }
+    .home-project-shot-url { min-width: 0; margin-left: 3px; padding: 4px 8px; font-size: 10px; }
+    .home-project-body { padding: 17px 18px 19px; }
+    .home-project-body h3 { font-size: 17px; }
+    .home-project-body p { min-height: 0; margin-bottom: 13px; font-size: 13px; }
+    .home-project-tags { gap: 6px; }
+    .home-project-tags span { padding: 4px 8px; font-size: 11px; }
+    .home-project-controls { gap: 14px; margin-top: 2px; }
+    .home-project-arrow { width: 42px; height: 42px; }
+    .home-project-control-label { font-size: 11px; }
+  }
 
   .skills-v2-page { max-width: 760px; margin: 0 auto; padding: 24px 32px 100px; }
   .skills-v2-page .page-header { margin-left: 0; margin-right: 0; }

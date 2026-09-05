@@ -161,8 +161,8 @@ const Home = () => {
           <div className="hero-badge"><span className="hero-badge-dot" />Available for new projects</div>
 
           <h1>
-            Hi, I&apos;m {resume.name}.<br />
-            I build <span className="text-primary">websites</span> that work beautifully.
+            I&apos;m <span className="text-primary uppercase">{resume.name}</span>!<br />
+            I turn ideas into exceptional <span className="text-primary uppercase">websites</span>.
           </h1>
 
           <p className="hero-subhead">

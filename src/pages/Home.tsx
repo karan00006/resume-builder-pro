@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin, GraduationCap, Briefcase, ExternalLink, Folder } from "lucide-react";
+import { ArrowRight, MapPin, GraduationCap, ExternalLink, Folder } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { resume } from "@/data/resume";
-import profilePic from "@/assets/profile.png";
-import cbrixLogo from "@/assets/cbrix-logo.png";
 import alhijazTravel from "@/assets/projects/alhijaz-travel.png";
 import cheapHolidaysPackages from "@/assets/projects/cheap-holidays-packages.png";
 import buraqTravel from "@/assets/projects/buraq-travel.png";
@@ -28,84 +27,203 @@ const featuredProjects = resume.projects.filter((p) =>
   ["Al Hijaz Travel", "Cheap Holidays Packages", "Buraq Travel", "Dua Tour", "Notty Notes — Margin", "StudyForge — AI Study OS", "Study Buddy Math", "Geometry Guru Pro"].includes(p.name)
 );
 
+const TerminalHero = () => {
+  const [typed, setTyped] = useState("");
+  const [showOutput, setShowOutput] = useState(false);
+
+  useEffect(() => {
+    const text = "say hi";
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reducedMotion) {
+      setTyped(text);
+      setShowOutput(true);
+      return;
+    }
+
+    let index = 0;
+    const typeTimer = window.setInterval(() => {
+      index += 1;
+      setTyped(text.slice(0, index));
+      if (index === text.length) {
+        window.clearInterval(typeTimer);
+        window.setTimeout(() => setShowOutput(true), 300);
+      }
+    }, 90);
+
+    return () => window.clearInterval(typeTimer);
+  }, []);
+
+  return (
+    <div className="hero-terminal">
+      <div className="hero-terminal-bar">
+        <span className="hero-terminal-dot bg-[#ff5f57]" />
+        <span className="hero-terminal-dot bg-[#febc2e]" />
+        <span className="hero-terminal-dot bg-[#28c840]" />
+        <span className="hero-terminal-title">karan@dev — zsh</span>
+      </div>
+      <div className="hero-terminal-body">
+        <div className="hero-terminal-input">
+          <span className="text-primary mr-2">$</span>
+          {typed}
+          <span className="hero-terminal-cursor" />
+        </div>
+        <div className={`hero-terminal-output ${showOutput ? "is-visible" : ""}`}>
+          <div>👋 Hey, I&apos;m <strong>Karan</strong></div>
+          <div>💼 Web Developer at <strong>Cbrix</strong></div>
+          <div>🌍 Based in <span className="text-emerald-500">{resume.location}</span></div>
+          <div>🎓 Studying IT at <strong>PUCIT</strong></div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const HomeProjectCard = ({ project, image }: { project: (typeof resume.projects)[number]; image?: string }) => (
+  <article className="home-project-card">
+    <div className="home-project-shot">
+      <div className="home-project-shot-bar">
+        <span className="home-project-shot-dot bg-[#ff5f57]" />
+        <span className="home-project-shot-dot bg-[#febc2e]" />
+        <span className="home-project-shot-dot bg-[#28c840]" />
+        <span className="home-project-shot-url"><span className="text-primary">&#128274;</span>{project.url ?? "portfolio project"}</span>
+      </div>
+      {image ? (
+        <div className="home-project-image-wrap">
+          <img src={image} alt={`${project.name} preview`} className="home-project-image" loading="lazy" />
+        </div>
+      ) : (
+        <div className="home-project-placeholder"><span>{project.name}</span></div>
+      )}
+    </div>
+    <div className="home-project-body">
+      <div className="home-project-top">
+        <div className="home-project-folder"><Folder className="h-4 w-4" /></div>
+        {project.url && (
+          <a href={`https://${project.url}`} target="_blank" rel="noreferrer" className="home-project-link" aria-label={`Open ${project.name}`}>
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        )}
+      </div>
+      <h3>{project.name}</h3>
+      <p>{project.description}</p>
+      <div className="home-project-tags">
+        {project.stack.slice(0, 4).map((stack) => <span key={stack}>{stack}</span>)}
+      </div>
+    </div>
+  </article>
+);
+
+const HomeProjectSwiper = () => {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef({ active: false, startX: 0, startScrollLeft: 0 });
+  const activeIndexRef = useRef(0);
+  const interactingRef = useRef(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const getCards = () => Array.from(trackRef.current?.children ?? []) as HTMLElement[];
+  const scrollToCard = (index: number) => {
+    const card = getCards()[index];
+    if (card) trackRef.current?.scrollTo({ left: card.offsetLeft - 6, behavior: "smooth" });
+  };
+  const updateActiveIndex = () => {
+    const track = trackRef.current;
+    const cards = getCards();
+    if (!track || cards.length === 0) return;
+    const nearest = cards.reduce((best, card, index) =>
+      Math.abs(card.offsetLeft - track.scrollLeft - 6) < Math.abs(cards[best].offsetLeft - track.scrollLeft - 6) ? index : best, 0);
+    activeIndexRef.current = nearest;
+    setActiveIndex(nearest);
+  };
+
+  useEffect(() => {
+    const autoplay = window.setInterval(() => {
+      if (interactingRef.current) return;
+      const nextIndex = activeIndexRef.current >= featuredProjects.length - 1 ? 0 : activeIndexRef.current + 1;
+      scrollToCard(nextIndex);
+    }, 4000);
+
+    return () => window.clearInterval(autoplay);
+  }, []);
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    const track = trackRef.current;
+    if (!track) return;
+    interactingRef.current = true;
+    dragRef.current = { active: true, startX: event.clientX, startScrollLeft: track.scrollLeft };
+    track.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    const track = trackRef.current;
+    if (!track || !dragRef.current.active) return;
+    event.preventDefault();
+    track.scrollLeft = dragRef.current.startScrollLeft - (event.clientX - dragRef.current.startX);
+  };
+
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    const track = trackRef.current;
+    if (track?.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
+    dragRef.current.active = false;
+    window.setTimeout(() => { interactingRef.current = false; }, 250);
+  };
+
+  return (
+    <div className="home-project-swiper">
+      <div
+        ref={trackRef}
+        className="home-project-track"
+        onScroll={updateActiveIndex}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+        onPointerEnter={() => { interactingRef.current = true; }}
+        onPointerLeave={() => { if (!dragRef.current.active) interactingRef.current = false; }}
+      >
+        {featuredProjects.map((project) => (
+          <HomeProjectCard key={project.name} project={project} image={project.image ? featuredImages[project.image] : undefined} />
+        ))}
+      </div>
+      <div className="home-project-controls">
+        <button type="button" onClick={() => scrollToCard(Math.max(0, activeIndex - 1))} aria-label="Previous project" className="home-project-arrow"><ArrowRight className="h-4 w-4 rotate-180" /></button>
+        <div className="home-project-dots">
+          {featuredProjects.map((project, index) => <button type="button" key={project.name} onClick={() => scrollToCard(index)} className={index === activeIndex ? "is-active" : ""} aria-label={`Go to project ${index + 1}`} />)}
+        </div>
+        <button type="button" onClick={() => scrollToCard(Math.min(featuredProjects.length - 1, activeIndex + 1))} aria-label="Next project" className="home-project-arrow"><ArrowRight className="h-4 w-4" /></button>
+      </div>
+    </div>
+  );
+};
 
 const Home = () => {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
-      <div className="container py-20 md:py-28 relative">
-        <div className="grid md:grid-cols-[1fr_auto] gap-10 md:gap-14 items-center">
-          <div className="max-w-3xl order-2 md:order-1">
-            <p className="font-mono text-sm text-primary mb-6 flex items-center gap-2">
-              <span className="inline-block w-2 h-2 rounded-full bg-accent animate-pulse" />
-              available for opportunities
-            </p>
-            <h1 className="font-mono text-5xl md:text-7xl font-bold leading-tight mb-6">
-              <span className="text-muted-foreground">&lt;</span>
-              <span className="text-gradient">{resume.name}</span>
-              <span className="text-muted-foreground"> /&gt;</span>
-            </h1>
-            <p className="text-2xl md:text-4xl font-semibold mb-6">
-              I build <span className="text-primary">responsive</span>, modern{" "}
-              <span className="text-accent">web applications</span>.
-            </p>
+      <div className="portfolio-hero">
+        <div className="hero-copy">
+          <div className="hero-badge"><span className="hero-badge-dot" />Available for new projects</div>
 
-            <a
-              href={resume.company.url}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-3 mb-8 px-4 py-2 rounded-full border border-border bg-card/60 hover:border-primary transition-colors group"
-            >
-              <Briefcase className="h-4 w-4 text-primary" />
-              <span className="font-mono text-sm text-muted-foreground">currently @</span>
-              <img
-                src={cbrixLogo}
-                alt="Cbrix logo"
-                width={64}
-                height={20}
-                className="h-5 w-auto"
-                loading="lazy"
-              />
-            </a>
+          <h1>
+            Hi, I&apos;m {resume.name}.<br />
+            I build <span className="text-primary">websites</span> that work beautifully.
+          </h1>
 
-            <p className="text-muted-foreground text-lg max-w-2xl mb-10 leading-relaxed">
-              {resume.summary}
-            </p>
-            <div className="flex flex-wrap items-center gap-4 mb-12">
-              <Link to="/projects" className="group inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-mono font-medium hover:glow-primary transition-all">
-                view projects <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-border hover:border-primary font-mono font-medium transition-colors">
-                get in touch
-              </Link>
-            </div>
-            <div className="flex flex-wrap gap-6 font-mono text-sm text-muted-foreground">
-              <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" />{resume.location}</span>
-              <span className="flex items-center gap-2"><GraduationCap className="h-4 w-4 text-primary" />PUCIT, Punjab University</span>
-            </div>
+          <p className="hero-subhead">
+            I&apos;m a web developer at {resume.company.name}, where I help build travel booking sites, business websites, and custom web apps for real clients. I&apos;m also studying Information Technology at Punjab University.
+          </p>
+
+          <div className="hero-ctas">
+            <Link to="/projects" className="hero-btn hero-btn-primary">View my work <ArrowRight className="h-4 w-4" /></Link>
+            <Link to="/contact" className="hero-btn hero-btn-secondary">Get in touch</Link>
           </div>
 
-          <div className="order-1 md:order-2 flex justify-center">
-            <div className="relative w-56 h-56 md:w-72 md:h-72 float">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 via-accent/25 to-transparent blur-3xl pulse-glow rounded-full" />
-              <div className="absolute -inset-6 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.15),transparent_70%)]" />
-              <img
-                src={profilePic}
-                alt={`${resume.name} — ${resume.role}`}
-                width={640}
-                height={640}
-                className="relative w-full h-full object-cover object-top"
-                style={{
-                  WebkitMaskImage:
-                    "radial-gradient(ellipse 70% 75% at 50% 42%, #000 35%, rgba(0,0,0,0.9) 55%, rgba(0,0,0,0.4) 80%, transparent 100%)",
-                  maskImage:
-                    "radial-gradient(ellipse 70% 75% at 50% 42%, #000 35%, rgba(0,0,0,0.9) 55%, rgba(0,0,0,0.4) 80%, transparent 100%)",
-                  filter: "drop-shadow(0 10px 30px hsl(var(--primary) / 0.25))",
-                }}
-              />
-            </div>
+          <div className="hero-meta">
+            <span><MapPin className="h-4 w-4 text-primary" />{resume.location}</span>
+            <span><GraduationCap className="h-4 w-4 text-primary" />PUCIT, Punjab University</span>
           </div>
         </div>
+
+        <TerminalHero />
       </div>
 
       <div className="container pb-20">
@@ -141,62 +259,7 @@ const Home = () => {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {featuredProjects.map((p, i) => {
-            const img = p.image ? featuredImages[p.image] : undefined;
-            return (
-              <motion.article
-                key={p.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -6 }}
-                className="group rounded-lg border border-border bg-card/50 overflow-hidden hover:border-primary hover:shadow-[0_15px_40px_-15px_hsl(var(--primary)/0.5)] transition-colors flex flex-col"
-              >
-                {img && (
-                  <div className="aspect-video overflow-hidden border-b border-border bg-secondary">
-                    <img
-                      src={img}
-                      alt={`${p.name} preview`}
-                      loading="lazy"
-                      width={1280}
-                      height={800}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                )}
-                <div className="p-6 flex-1 flex flex-col">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="p-2 rounded-md bg-primary/10 border border-primary/30">
-                      <Folder className="h-5 w-5 text-primary" />
-                    </div>
-                    {p.url && (
-                      <a
-                        href={`https://${p.url}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-2 rounded-md hover:bg-secondary text-muted-foreground hover:text-primary transition-colors"
-                        aria-label={`Open ${p.name}`}
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </a>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{p.name}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">{p.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {p.stack.slice(0, 4).map((s) => (
-                      <span key={s} className="font-mono text-xs px-2 py-1 rounded bg-secondary text-foreground/80 border border-border">
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.article>
-            );
-          })}
-        </div>
+        <HomeProjectSwiper />
 
         <div className="mt-8 md:hidden">
           <Link to="/projects" className="inline-flex items-center gap-2 font-mono text-sm text-primary hover:underline">

@@ -3,13 +3,13 @@ import { Moon, Sun } from "lucide-react";
 
 export type Theme = "light" | "dark";
 
-const themes: Theme[] = ["light", "dark"];
+const themes: Theme[] = ["dark", "light"];
 
 const getInitialTheme = (): Theme => {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
   const stored = localStorage.getItem("theme") as Theme | null;
   if (stored && themes.includes(stored)) return stored;
-  return "light";
+  return "dark";
 };
 
 export const applyTheme = (theme: Theme) => {
